@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="font.css">
+    <script src="https://kit.fontawesome.com/79df314047.js" crossorigin="anonymous"></script>
+    <style>
+        *{
+            font-family: "Poppins", sans-serif;
+        }
+        ::backdrop {
+            background-image: linear-gradient(
+                45deg,
+                rgb(16, 13, 16),
+                rgb(26, 24, 24),
+                rgb(21, 21, 21),
+                rgb(45, 47, 45)
+            );
+            opacity: 0.75;
+        }
+    </style>
+    <title>Penyedia</title>
+</head>
+<body>
+    <div class="w-full bg-slate-100 h-screen">
+        <nav class="bg-white w-full h-16 flex justify-end items-center px-6 fixed z-[20]">
+            <div class="h-12 w-12 rounded-full bg-black overflow-hidden border-[1px] border-blue-400">
+                <img src="portal T gradient.png" alt="" class="h-12 m-auto">
+            </div>
+        </nav>
+
+        <aside class="fixed z-[999] w-52 bg-blue-500 h-screen">
+            <h1 class="text-2xl font-semibold text-white p-5">PENYEDIA</h1>
+
+            <div class="mt-24">
+                <ul class="h-48 flex flex-col justify-between">
+                    <li class="group p-3"><a class="text-white text-slate-200 duration-500 " href="#"><i class="fa-solid fa-gauge me-4"></i>Dashboard</a></li>
+                    <li class="group p-3 w-full bg-blue-600 rounded-sm"><a class="group-hover:text-white text-slate-200 duration-500" href="#"><i class="fa-solid fa-address-book me-4"></i>Tambahkan Stok</a></li>
+                    <li class="group p-3"><a class="group-hover:text-white text-slate-200 duration-500" href="#"><i class="fa-solid fa-cart-shopping me-4"></i>Pesanan</a></li>
+                    <li class="group p-3"><a class="group-hover:text-white text-slate-200 duration-500" href="#"><i class="fa-solid fa-left-long me-4"></i>Logout</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <div class="w-full h-full pt-16 ps-56 pe-4 ">
+            <h1 class="text-2xl my-10 font-semibold">Stok</h1>
+            <div>
+                <div>
+                    <h1>Modem Tersedia</h1>
+                    <div class="flex gap-4 text-sm items-center">
+                        <div class="mt-4">
+                            <span class="me-2">N1</span>
+                            <input type="text" class="outline-none w-12 text-sm text-slate-500 p-1" value="21" readonly>
+                        </div>
+                        <div class="mt-4">
+                            <span class="me-2">N2</span>
+                            <input type="text" class="outline-none w-12 text-sm text-slate-500 p-1" value="21" readonly>
+                        </div>
+                        <button type="button" id="btnTambah" class="mt-5 p-2 bg-blue-500 rounded-sm text-white text-sm">Tambah Stok</button>
+
+                        <dialog class="w-[250px] p-4 bg-slate-100 text-sm rounded-lg">
+                            <div class="text-end cursor-pointer" id="closeModal">
+                                <i class="fa-solid fa-xmark text-lg"></i>
+                            </div>
+                            <h1 class="text-lg">Tambahkan Stok</h1>
+                            <form action="" class="mt-5">
+                                <div class="mt-2 flex flex-col">
+                                    <label class="text-sm">Jenis Modem</label>
+                                    <select name="" id="" class="p-1 text-[12px] px-2 outline-none">
+                                        <option value="">N1</option>
+                                        <option value="">N2</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="mt-5 p-2 bg-blue-500 rounded-sm text-white text-sm">Tambahkan</button>
+                           </form>
+                        </dialog>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8">
+                <h1>Lokasi Tersedia</h1>
+                <table class="mt-4 table-fixed w-full border-collapse">
+                    <thead>
+                        <tr class="border">
+                            <th class="border text-start">Kota/Kabupaten</th>
+                            <th class="border text-start">Provinsi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border">Sorong</td>
+                            <td class="border">Papua Barat Daya</td>
+                        </tr>
+                        <tr>
+                            <td class="border">Raja Ampat</td>
+                            <td class="border">Papua Barat Daya</td>
+                        </tr>
+                        <tr>
+                            <td class="border" >Fak-fak</td>
+                            <td class="border">Papua Barat</td>
+                        </tr>
+                        <tr>
+                            <td class="border">Manokwari</td>
+                            <td class="border">Papua Barat</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>  
+
+    <script>
+        const tambahBtn = document.getElementById('btnTambah');
+        const closeModal = document.getElementById('closeModal');
+        const modal = document.querySelector('dialog');
+
+        tambahBtn.addEventListener('click', function(e){
+            e.preventDefault();
+
+            modal.showModal();
+        });
+
+        closeModal.addEventListener('click', function(e){
+            e.preventDefault();
+
+            modal.close();
+        });
+    </script>
+</body>
+</html>
