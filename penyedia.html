@@ -13,43 +13,110 @@
         *{
             font-family: "Poppins", sans-serif;
         }
+        ::backdrop {
+            background-image: linear-gradient(
+                45deg,
+                rgb(16, 13, 16),
+                rgb(26, 24, 24),
+                rgb(21, 21, 21),
+                rgb(45, 47, 45)
+            );
+            opacity: 0.75;
+        }
     </style>
     <title>Penyedia</title>
 </head>
 <body >
     <div class="w-full bg-slate-100 h-screen">
-        <nav class="bg-white w-full h-16 flex justify-end items-center px-6 fixed z-[20]">
-            <div class="h-12 w-12 rounded-full bg-black overflow-hidden border-[1px] border-blue-400">
-                <img src="portal T gradient.png" alt="" class="h-12 m-auto">
+        <nav class="w-full h-16 flex items-center justify-between px-6 bg-slate-800 static">
+            <div>
+                <img src="telkomsel-logo.png" alt="">
             </div>
-        </nav>
-
-        <aside class="fixed z-[999] w-52 bg-blue-500 h-screen">
-            <h1 class="text-2xl font-semibold text-white p-5">PENYEDIA</h1>
-
-            <div class="mt-24">
-                <ul class="h-48 flex flex-col justify-between">
-                    <li class="group w-full bg-blue-600 p-3 rounded-sm"><a class="text-white text-slate-200 duration-500 " href="#"><i class="fa-solid fa-gauge me-4"></i>Dashboard</a></li>
-                    <li class="group p-3"><a class="group-hover:text-white text-slate-200 duration-500" href="stok.html"><i class="fa-solid fa-address-book me-4"></i>Tambahkan Stok</a></li>
-                    <li class="group p-3"><a class="group-hover:text-white text-slate-200 duration-500" href="#"><i class="fa-solid fa-cart-shopping me-4"></i>Pesanan</a></li>
-                    <li class="group p-3"><a class="group-hover:text-white text-slate-200 duration-500" href="#"><i class="fa-solid fa-left-long me-4"></i>Logout</a></li>
+            <div>
+                <ul>
+                    <li><a href=""></a></li>
                 </ul>
             </div>
-        </aside>
+            <a href="#" class="p-2 bg-red-600 text-white rounded-sm hover:bg-red-700 duration-500 text-sm">Logout</a>
+        </nav>
 
-        <div class="w-full h-full pt-16 ps-56 pe-4 ">
-            <h1 class="text-2xl my-10 font-semibold">Dashboard</h1>
+        <div class="w-full h-full p-14">
+            <h1 class="text-3xl mb-20 font-semibold">Dashboard</h1>
             <div class="grid grid-cols-2 gap-5">
                 <div>
-                    <h1><i class="fa-solid fa-plus me-3"></i>Weekly Reports</h1>
+                    <h1><i class="fa-solid fa-plus me-3"></i>Last Week's Orders Report</h1>
                     <input type="text" class="my-2 text-[12px] py-1 px-2 outline-none text-slate-400" value="17/02/2024 - 24/02/2024" readonly>
                     <div id="chart" class="bg-white h-fit p-2 rounded-sm shadow-lg"></div>
                 </div>
                 <div>
-                    <h1><i class="fa-solid fa-plus me-3 mb-2"></i>Weekly Reports</h1>
+                    <h1><i class="fa-solid fa-plus me-3"></i>Monthly Modem Rental Report</h1>
+                    <input type="text" class="my-2 text-[12px] py-1 px-2 outline-none text-slate-400" value="Year: 2024" readonly>
                     <div id="chart2" class="bg-white h-fit p-2 rounded-sm shadow-lg"></div>
                 </div>
             </div>
+
+            <section class="mt-20 pb-20 bg-white p-5">
+                <h1 class="text-2xl my-10">Stok dan Pesanan</h1>
+                <div class="grid grid-cols-12 w-full">
+                    
+                    <div class="col-span-4">
+                        <h1 class="text-lg">Modem Tersedia</h1>
+                        <div class="flex gap-4 text-sm items-center">
+                            <div class="mt-4">
+                                <span class="me-2">N1</span>
+                                <input type="text" class="outline-none w-12 text-sm text-slate-500 p-1 text-center" value="21" readonly>
+                            </div>
+                            <div class="mt-4">
+                                <span class="me-2">N2</span>
+                                <input type="text" class="outline-none w-12 text-sm text-slate-500 p-1 text-center" value="21" readonly>
+                            </div>
+                            <button type="button" id="btnTambah" class="mt-5 p-2 bg-blue-500 rounded-sm text-white text-sm">Tambah Stok</button>
+    
+                            <dialog class="w-[250px] p-4 bg-slate-100 text-sm rounded-lg">
+                                <div class="text-end cursor-pointer" id="closeModal">
+                                    <i class="fa-solid fa-xmark text-lg"></i>
+                                </div>
+                                <h1 class="text-lg">Tambahkan Stok</h1>
+                                <form action="" class="mt-5">
+                                    <div class="mt-2 flex flex-col">
+                                        <label class="text-sm">Pilih Modem</label>
+                                        <select name="modem" class="text-[12px] w-56 border-2 py-1 px-2 outline-none text-slate-800 shadow mt-2">
+                                            <option value="">N1</option>
+                                            <option value="">N2</option>
+                                        </select>
+                                    </div>
+                                    <button type="submit" class="mt-5 p-2 bg-blue-500 rounded-sm text-white text-sm">Tambahkan</button>
+                               </form>
+                            </dialog>
+                        </div>
+                    </div>
+
+                    <div class="col-span-2 mt-5">
+                        <h1>Jumlah Pesanan</h1>
+                        <input type="text" class="outline-none w-12 text-sm text-slate-500 p-1 mt-4 text-center" value="22">
+                    </div>
+                </div>
+
+                <div class="mt-4 text-sm">
+                    <h1 class="text-lg">Lokasi Tersedia</h1>
+                    <div class="grid grid-cols-2 mt-4 text-slate-500">
+                        <div>
+                            <p>Lokasi</p>
+                        </div>
+                        <div>
+                            <p>Provinsi</p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 mt-4">
+                        <div>
+                            <p>Sorong</p>
+                        </div>
+                        <div>
+                            <p>Papua Barat Daya</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
     </div>
 
@@ -80,13 +147,25 @@
             data: [30,40,35,50]
         }],
         xaxis: {
-            categories: [1991,1992,1993,1994,1995,1996,1997, 1998,1999]
+            categories: ['Jan', 'Feb', 'Mar', 'Apr']
         }
         }
 
         var chart = new ApexCharts(document.querySelector("#chart2"), options);
 
         chart.render();
+
+        const modal = document.querySelector('dialog');
+        const closeModal = document.querySelector('#closeModal');
+        const addBtn = document.querySelector('#btnTambah');
+
+        addBtn.addEventListener('click', (e) => {
+            modal.showModal();
+        });
+
+        closeModal.addEventListener('click', (e) => {
+            modal.close();
+        });
     </script>
 </body>
 </html>
